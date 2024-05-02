@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding=true
+    }
 }
 
 dependencies {
@@ -57,5 +60,12 @@ dependencies {
 
     //gif
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+
+    //retrofti
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //glide to load remote image
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
 
 }

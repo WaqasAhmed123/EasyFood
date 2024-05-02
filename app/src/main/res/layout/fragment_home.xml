@@ -7,7 +7,7 @@
     android:layout_marginStart="@dimen/_16sdp"
     android:layout_marginTop="@dimen/_16sdp"
     android:layout_marginEnd="@dimen/_16sdp"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/random_meal"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="@dimen/_160sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardCornerRadius="@dimen/_10sdp"
                 app:cardUseCompatPadding="true"
@@ -96,7 +96,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rec_view_meals_popular"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_120sdp"
+                android:layout_height="@dimen/_90sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/tv_over_popular">
