@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MealActivity">
+    tools:context=".activities.MealDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_230sdp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toobar"
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/accent"
@@ -44,12 +44,13 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_10sdp"
         android:src="@drawable/ic_fav"
         app:backgroundTint="@color/accent"
-        app:layout_anchor="@id/appbar"
+        app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="bottom|end"
         app:tint="@color/white"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -61,50 +62,89 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp">
 
             <LinearLayout
+                android:id="@+id/meal_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:layout_constraintTop_toBottomOf="@id/appbar"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBaseline_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="parent">
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appBar">
 
                 <TextView
+                    android:id="@+id/tv_categoryInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Category:Beef"
-                    android:textStyle="bold"
-                    android:textColor="@color/g_black"
+                    android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_category"
                     android:drawableTint="@color/g_black"
-                    android:layout_weight="1">
+                    android:textColor="@color/g_black"
+                    android:textStyle="bold">
 
                 </TextView>
 
                 <TextView
+                    android:id="@+id/tv_areaInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:drawableLeft="@drawable/ic_location"
                     android:drawableTint="@color/g_black"
-                    android:text="Area : Pakistan"
                     android:textColor="@color/g_black"
-                    android:textStyle="bold"
-                    android:layout_weight="1">
+                    android:textStyle="bold">
 
                 </TextView>
 
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_instructions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-Instructions:"
+                android:textColor="@color/g_black"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/myfont"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintTop_toBottomOf="@+id/meal_info">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_instructions" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView><ImageView
+    android:id="@+id/img_youtube"
+    android:layout_width="50dp"
+    android:layout_height="40dp"
+    android:layout_gravity="bottom|center"
+    android:src="@drawable/ic_video"
+    android:layout_marginBottom="@dimen/_5sdp"
+    app:backgroundTint="@color/accent"
+    app:tint="@color/accent"/>
 
-
-    </androidx.core.widget.NestedScrollView>
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom|end"
+        android:visibility="gone"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
