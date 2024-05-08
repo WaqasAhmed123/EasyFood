@@ -1,6 +1,6 @@
-package com.example.projo
+package com.example.easyfood.model
 
-data class CategoryMeals(
+data class ParticularCategoryMeal(
     val idMeal: String,
     val strMeal: String,
     val strMealThumb: String

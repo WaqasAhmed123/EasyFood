@@ -1,12 +1,12 @@
-package com.example.viewModel
+package com.example.easyfood.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.easyfood.retrofit.RetrofitInstance
-import com.example.projo.Meal
-import com.example.projo.MealList
+import com.example.easyfood.model.Meal
+import com.example.easyfood.model.MealList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

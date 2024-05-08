@@ -11,10 +11,10 @@ import com.bumptech.glide.Glide
 import com.example.easyfood.R
 import com.example.easyfood.databinding.ActivityMealBinding
 import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_ID
-import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_STR
+import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_NAME
 import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_THUMB
-import com.example.projo.Meal
-import com.example.viewModel.MealDetailsViewModel
+import com.example.easyfood.model.Meal
+import com.example.easyfood.viewModel.MealDetailsViewModel
 
 class MealDetailsActivity : AppCompatActivity() {
     private  lateinit var binding: ActivityMealBinding
@@ -74,7 +74,7 @@ class MealDetailsActivity : AppCompatActivity() {
         val tempIntent = intent
 
         this.mealId = tempIntent.getStringExtra(MEAL_ID)!!
-        this.mealName = tempIntent.getStringExtra(MEAL_STR)!!
+        this.mealName = tempIntent.getStringExtra(MEAL_NAME)!!
         this.mealThumb = tempIntent.getStringExtra(MEAL_THUMB)!!
     }
 

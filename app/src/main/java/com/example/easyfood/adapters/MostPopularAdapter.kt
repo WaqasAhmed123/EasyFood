@@ -1,19 +1,17 @@
 package com.example.easyfood.adapters
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.ViewTarget
 import com.example.easyfood.databinding.PopularItemsBinding
-import com.example.projo.CategoryMeals
+import com.example.easyfood.model.ParticularCategoryMeal
 
 class MostPopularAdapter() : RecyclerView.Adapter<MostPopularAdapter.PopularMealViewHolder>() {
-    private var mealsList = ArrayList<CategoryMeals>()
+    private var mealsList = ArrayList<ParticularCategoryMeal>()
+    lateinit var onItemClick:((ParticularCategoryMeal)->Unit)
 
-    fun setMeals(mealsList: ArrayList<CategoryMeals>) {
+    fun setMeals(mealsList: ArrayList<ParticularCategoryMeal>) {
         this.mealsList = mealsList
         notifyDataSetChanged()
 
@@ -34,6 +32,10 @@ class MostPopularAdapter() : RecyclerView.Adapter<MostPopularAdapter.PopularMeal
         Glide.with(holder.itemView.context)
             .load(mealsList[position].strMealThumb)
             .into(holder.binding.imgPopularMealItem)
+
+        holder.itemView.setOnClickListener{
+            onItemClick.invoke(mealsList[position])
+        }
     }
 
     class PopularMealViewHolder(var binding: PopularItemsBinding) :
