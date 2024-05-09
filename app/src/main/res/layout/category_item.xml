@@ -21,9 +21,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/img_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:textSize="@dimen/_13ssp"
-        android:text="Category name"
+        android:text=""
         android:textColor="@color/black"
         android:fontFamily="@font/myfont"
         android:layout_marginTop="@dimen/_3sdp">
