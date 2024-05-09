@@ -38,6 +38,6 @@ class MostPopularAdapter() : RecyclerView.Adapter<MostPopularAdapter.PopularMeal
         }
     }
 
-    class PopularMealViewHolder(var binding: PopularItemsBinding) :
+    inner class PopularMealViewHolder(var binding: PopularItemsBinding) :
         RecyclerView.ViewHolder(binding.root)
 }

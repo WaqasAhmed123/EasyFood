@@ -4,31 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/_16sdp"
-    android:layout_marginBottom="@dimen/_16sdp"
-    android:layout_marginStart="@dimen/_16sdp"
-    android:layout_marginEnd="@dimen/_16sdp"
     tools:context=".activities.CategoryMealsActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_category_count"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/_16sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="xyz"
+        android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
     </androidx.appcompat.widget.AppCompatTextView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_meals"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintTop_toBottomOf="@+id/tv_category_count"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="?attr/actionBarSize"
+        >
 
     </androidx.recyclerview.widget.RecyclerView>
 

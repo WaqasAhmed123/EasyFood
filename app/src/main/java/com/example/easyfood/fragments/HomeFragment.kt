@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         const val MEAL_ID = "com.example.easyfood.fragments.idMeal"
         const val MEAL_NAME = "com.example.easyfood.fragments.nameMeal"
         const val MEAL_THUMB = "com.example.easyfood.fragments.thumbMeal"
-        const val CATEGORY_NAME = " com.example.easyfood.fragments.categoryName"
+        const val CATEGORY_NAME = "com.example.easyfood.fragments.categoryName"
         const val MEAL_STR = " com.example.easyfood.fragments.strMeal"
         const val MEAL_AREA = " com.example.easyfood.fragments.strArea"
 
@@ -143,7 +143,7 @@ class HomeFragment : Fragment() {
     private fun onCategoryClick() {
         categoriesAdapter.onItemClick = { category ->
             val intent = Intent(activity, CategoryMealsActivity::class.java)
-            intent.putExtra(MEAL_NAME, category.strCategory)
+            intent.putExtra(CATEGORY_NAME, category.strCategory)
 //            intent.putExtra(MEAL_NAME, meal.strMeal)
 //            intent.putExtra(MEAL_THUMB, meal.strMealThumb)
             startActivity(intent)
