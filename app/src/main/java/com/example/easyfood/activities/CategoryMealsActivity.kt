@@ -3,6 +3,7 @@ package com.example.easyfood.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -24,22 +25,22 @@ class CategoryMealsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         layoutBinding = ActivityCategoryMealsBinding.inflate(layoutInflater)
         setContentView(layoutBinding.root)
-        categoryMealsViewModel= ViewModelProviders.of(this)[CategoryMealsViewModel::class.java]
-        categoryMealsAdapter= ParticularCategoryMealAdapter()
+        categoryMealsViewModel = ViewModelProviders.of(this)[CategoryMealsViewModel::class.java]
+        categoryMealsAdapter = ParticularCategoryMealAdapter()
         categoryMealsViewModel.getMealsByCategory(intent.getStringExtra(HomeFragment.CATEGORY_NAME)!!)
-
 
         categoryMealsViewModel.observeCategoryMealsLiveData().observe(this, Observer {
             categoryMealsAdapter.setMealsByCategoryList(mealsList = it as ArrayList<ParticularCategoryMeal>)
-            layoutBinding.tvCategoryCount.text="${intent.getStringExtra(HomeFragment.CATEGORY_NAME)}:${it.size}"
+            layoutBinding.tvCategoryCount.text =
+                "${intent.getStringExtra(HomeFragment.CATEGORY_NAME)}:${it.size}"
 
-            Log.d("CatMealsList","$it")
+            Log.d("CatMealsList", "$it")
         })
 
 
         layoutBinding.rvMeals.apply {
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
-            adapter =categoryMealsAdapter
+            adapter = categoryMealsAdapter
         }
     }
 

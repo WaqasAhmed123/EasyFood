@@ -6,17 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".activities.CategoryMealsActivity">
 
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:minWidth="@dimen/_48sdp"-->
+<!--        android:minHeight="@dimen/_48sdp"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_category_count"
-        android:textColor="@color/accent"
-        android:textSize="@dimen/_16sdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.appcompat.widget.AppCompatTextView>
 
@@ -25,17 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category_count"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:paddingBottom="?attr/actionBarSize"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category_count">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
