@@ -1,5 +1,6 @@
 package com.example.easyfood.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() {
         const val MEAL_ID = "com.example.easyfood.fragments.idMeal"
         const val MEAL_NAME = "com.example.easyfood.fragments.nameMeal"
         const val MEAL_THUMB = "com.example.easyfood.fragments.thumbMeal"
-        const val CATEGORY_NAME = "com.example.easyfood.fragments.categoryName"
+        const val   CATEGORY_NAME = "com.example.easyfood.fragments.categoryName"
         const val MEAL_STR = " com.example.easyfood.fragments.strMeal"
         const val MEAL_AREA = " com.example.easyfood.fragments.strArea"
 
@@ -143,6 +144,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun onPopularItemLongClick() {
         popularItemsAdapter.onLongItemClick = { meal ->
             Log.d("CheckIdInHome", "${meal.idMeal}")
