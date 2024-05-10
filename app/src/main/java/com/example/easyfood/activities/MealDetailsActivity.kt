@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.easyfood.R
@@ -14,11 +15,17 @@ import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_ID
 import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_NAME
 import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_THUMB
 import com.example.easyfood.model.Meal
+import com.example.easyfood.viewModel.HomeViewModel
 import com.example.easyfood.viewModel.MealDetailsViewModel
 
 class MealDetailsActivity : AppCompatActivity() {
+    val mealDetailsViewModel: MealDetailsViewModel by lazy {
+        ViewModelProvider(this).get(MealDetailsViewModel::class.java)
+
+    }
+
     private  lateinit var binding: ActivityMealBinding
-    private  lateinit var mealDetailsMvvm: MealDetailsViewModel
+//    private  lateinit var mealDetailsViewModel: MealDetailsViewModel
     private var mealId = ""
     private var mealName = ""
     private var mealStr = ""
@@ -26,12 +33,11 @@ class MealDetailsActivity : AppCompatActivity() {
     private var ytUrl = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mealDetailsMvvm = ViewModelProviders.of(this)[MealDetailsViewModel::class.java]
         binding=ActivityMealBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadingCase()
         getMealInfoFromIntent()
-        mealDetailsMvvm.getMealDetail(id = mealId)
+        mealDetailsViewModel.getMealDetail(id = mealId)
         setInformationInViews()
         observeMealDetailsLiveData()
 
@@ -44,7 +50,7 @@ class MealDetailsActivity : AppCompatActivity() {
 
 
     private fun observeMealDetailsLiveData() {
-        mealDetailsMvvm.observeRandomMealLiveData().observe(this,object :Observer<Meal>{
+        mealDetailsViewModel.observeMealDetailsLiveData().observe(this,object :Observer<Meal>{
             override fun onChanged(value: Meal) {
                 onResponseCase()
                 binding.tvCategoryInfo.text="category : ${value.strCategory}"
