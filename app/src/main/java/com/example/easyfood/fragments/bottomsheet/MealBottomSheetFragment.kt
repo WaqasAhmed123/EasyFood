@@ -18,7 +18,7 @@ import com.example.easyfood.viewModel.MealDetailsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-private const val MEAL_ID = "param1"
+private  var MEAL_ID = "param1"
 
 class MealBottomSheetFragment : BottomSheetDialogFragment() {
     private var mealId: String? = null
@@ -26,34 +26,29 @@ class MealBottomSheetFragment : BottomSheetDialogFragment() {
     private var mealStr = ""
     private var mealThumb = ""
     private var ytUrl = ""
-
-//    val mealDetailsViewModel: MealDetailsViewModel by lazy {
-//        ViewModelProvider(this).get(MealDetailsViewModel::class.java)
-//
-//    }
     private lateinit var layoutBinding: FragmentMealBottomSheetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            mealId=it.getString(MEAL_ID)
+            mealId = it.getString(com.example.easyfood.fragments.bottomsheet.MEAL_ID)
         }
         Log.d("CheckId", "$mealId")
         MealRepository.getMealDetail(mealId!!)
 //        observeBottomSheetMeal()
     }
 
-     fun observeBottomSheetMeal() {
+    fun observeBottomSheetMeal() {
         MealRepository.observeMealDetailsLiveData().observe(viewLifecycleOwner) {
-            Log.d("BSData","${it}")
+
             Glide.with(this).load(it.strMealThumb).into(layoutBinding.imgBottomSheet)
             layoutBinding.tvLocationMealBottomSheet.text = it.strArea
             layoutBinding.tvCategoryMealBottomSheet.text = it.strCategory
             layoutBinding.tvMealNameBottomSheet.text = it.strMeal
 
             //set values
-            mealName=it.strMeal
-            mealThumb=it.strMealThumb
+            mealName = it.strMeal
+            mealThumb = it.strMealThumb
 
         }
     }
@@ -62,22 +57,26 @@ class MealBottomSheetFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         layoutBinding = FragmentMealBottomSheetBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         return (layoutBinding.root)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("BSData","view created")
+        Log.d("BSData", "view created")
+        layoutBinding.mainLayout.visibility=View.INVISIBLE
+        layoutBinding.skeltonFragmentBottomSheet.root.visibility=View.VISIBLE
+        layoutBinding.skeltonFragmentBottomSheet.skeltonFragmentBottomSheet.startShimmer()
         observeBottomSheetMeal()
+        layoutBinding.mainLayout.visibility=View.VISIBLE
+        layoutBinding.skeltonFragmentBottomSheet.skeltonFragmentBottomSheet.stopShimmer()
+        layoutBinding.skeltonFragmentBottomSheet.root.visibility=View.INVISIBLE
         layoutBinding.tvReadMoreBottomSheet.setOnClickListener {
-            val intent = Intent(activity, MealDetailsActivity ::class.java)
+            val intent = Intent(activity, MealDetailsActivity::class.java)
             intent.putExtra(MEAL_ID, mealId)
             intent.putExtra(HomeFragment.MEAL_NAME, mealName)
             intent.putExtra(HomeFragment.MEAL_THUMB, mealThumb)
             startActivity(intent)
         }
-
 
 
     }

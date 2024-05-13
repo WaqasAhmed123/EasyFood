@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-kapt")
 }
 
 android {
@@ -74,7 +75,10 @@ dependencies {
     val lifecycle_version = "2.7.0-rc01"
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-//    implementation ("android.arch.lifecycle:extensions:1.1.0")
+    //implementation ("android.arch.lifecycle:extensions:1.1.0")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+
+    //shimmer effect
+    implementation ("com.facebook.shimmer:shimmer:0.5.0@aar")
 
 }

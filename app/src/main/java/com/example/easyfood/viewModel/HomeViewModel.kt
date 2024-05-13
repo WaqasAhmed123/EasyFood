@@ -20,6 +20,32 @@ class HomeViewModel : ViewModel() {
     private var popularItemsLiveData = MutableLiveData<List<ParticularCategoryMeal>>()
     private var allCategoriesLiveData = MutableLiveData<List<Category>>()
 
+//    companion object {
+
+    var countValueLiveData = MutableLiveData<Int>(0)
+//    var countValue :LiveData<Int> = countValueLiveData
+//    val countValue = MutableLiveData<Int>().apply {
+//        // Observe changes in countValueLiveData and update this LiveData
+//        countValueLiveData.observeForever { value ->
+//            this.value = value
+//        }}
+
+
+//    }
+
+    fun decrementValue() {
+        countValueLiveData.value = countValueLiveData.value?.minus(1)
+        Log.d("current value minus", "${countValueLiveData.value}")
+//        countValueLiveData.value=
+    }
+
+    fun incrementValue() {
+        countValueLiveData.value = countValueLiveData.value?.plus(1)
+        Log.d("current value plus", "${countValueLiveData.value}")
+
+    }
+
+
     fun getRandomMeal() {
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
             override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
@@ -72,31 +98,30 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getAllCategories() {
-        RetrofitInstance.api.getAllCategories()
-            .enqueue(object : Callback<CategoryList> {
+        RetrofitInstance.api.getAllCategories().enqueue(object : Callback<CategoryList> {
 
 
-                override fun onResponse(
-                    call: Call<CategoryList>, response: Response<CategoryList>
-                ) {
-                    if (response.body() != null) {
-                        val allCategoriesMeals: List<Category> = response.body()!!.categories
-                        Log.d("AllCategories", "${response.body()}")
-                        allCategoriesLiveData.value = allCategoriesMeals
+            override fun onResponse(
+                call: Call<CategoryList>, response: Response<CategoryList>
+            ) {
+                if (response.body() != null) {
+                    val allCategoriesMeals: List<Category> = response.body()!!.categories
+                    Log.d("AllCategories", "${response.body()}")
+                    allCategoriesLiveData.value = allCategoriesMeals
 
 
-                    } else {
-                        return
-
-                    }
-                }
-
-                override fun onFailure(call: Call<CategoryList>, t: Throwable) {
-                    Log.d("PopularMeal", t.message.toString())
+                } else {
+                    return
 
                 }
+            }
 
-            })
+            override fun onFailure(call: Call<CategoryList>, t: Throwable) {
+                Log.d("PopularMeal", t.message.toString())
+
+            }
+
+        })
     }
 
     fun observeRandomMealLiveData(): LiveData<Meal> {

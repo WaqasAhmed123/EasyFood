@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/skelton_fragment_bottom_sheet"
+    android:visibility="invisible"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragments.bottomsheet.MealBottomSheetFragment">
+
+<!--    <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/skelton_img_bottom_sheet"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="#DDDD"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/skeleton_linear_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/skelton_img_bottom_sheet"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <TextView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="#DDDD">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/skelton_tv_category_meal_bottom_sheet"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="#DDDD">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/skelton_tv_meal_name_bottom_sheet"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="#DDDD"
+            app:layout_constraintStart_toStartOf="@+id/skeleton_linear_bottom_sheet"
+            app:layout_constraintTop_toBottomOf="@+id/skeleton_linear_bottom_sheet"
+
+            />
+
+        <TextView
+            android:id="@+id/skelton_tv_read_more_bottom_sheet"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="#DDDD"
+
+            app:layout_constraintStart_toStartOf="@+id/skeleton_linear_bottom_sheet"
+            app:layout_constraintTop_toBottomOf="@+id/skelton_tv_meal_name_bottom_sheet"
+
+            />
+<!--    </com.facebook.shimmer.ShimmerFrameLayout>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.facebook.shimmer.ShimmerFrameLayout>
