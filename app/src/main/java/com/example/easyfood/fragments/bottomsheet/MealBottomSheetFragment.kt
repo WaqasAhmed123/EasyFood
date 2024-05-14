@@ -16,9 +16,10 @@ import com.example.easyfood.fragments.HomeFragment.Companion.MEAL_ID
 import com.example.easyfood.repository.MealRepository
 import com.example.easyfood.viewModel.MealDetailsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import java.util.logging.Handler
 
 
-private  var MEAL_ID = "param1"
+private var MEAL_ID = "param1"
 
 class MealBottomSheetFragment : BottomSheetDialogFragment() {
     private var mealId: String? = null
@@ -63,13 +64,16 @@ class MealBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("BSData", "view created")
-        layoutBinding.mainLayout.visibility=View.INVISIBLE
-        layoutBinding.skeltonFragmentBottomSheet.root.visibility=View.VISIBLE
+        layoutBinding.mainLayout.visibility = View.INVISIBLE
+        layoutBinding.skeltonFragmentBottomSheet.root.visibility = View.VISIBLE
         layoutBinding.skeltonFragmentBottomSheet.skeltonFragmentBottomSheet.startShimmer()
+        android.os.Handler().postDelayed({
+            layoutBinding.mainLayout.visibility = View.VISIBLE
+            layoutBinding.skeltonFragmentBottomSheet.skeltonFragmentBottomSheet.stopShimmer()
+            layoutBinding.skeltonFragmentBottomSheet.root.visibility = View.INVISIBLE
+
+        }, 3000)
         observeBottomSheetMeal()
-        layoutBinding.mainLayout.visibility=View.VISIBLE
-        layoutBinding.skeltonFragmentBottomSheet.skeltonFragmentBottomSheet.stopShimmer()
-        layoutBinding.skeltonFragmentBottomSheet.root.visibility=View.INVISIBLE
         layoutBinding.tvReadMoreBottomSheet.setOnClickListener {
             val intent = Intent(activity, MealDetailsActivity::class.java)
             intent.putExtra(MEAL_ID, mealId)
