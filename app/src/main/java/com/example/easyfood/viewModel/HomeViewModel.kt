@@ -19,6 +19,7 @@ class HomeViewModel : ViewModel() {
     private var randomMealLiveData = MutableLiveData<Meal>()
     private var popularItemsLiveData = MutableLiveData<List<ParticularCategoryMeal>>()
     private var allCategoriesLiveData = MutableLiveData<List<Category>>()
+     var inputData = MutableLiveData<String>()
 
 //    companion object {
 

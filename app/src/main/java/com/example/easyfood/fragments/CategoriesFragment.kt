@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.easyfood.R
+import com.example.easyfood.activities.MainActivity
 import com.example.easyfood.databinding.FragmentCategoriesBinding
 
 private const val ARG_PARAM1 = "param1"
@@ -38,6 +39,12 @@ class CategoriesFragment : Fragment() {
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_categories, container, false)
         return dataBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dataBinding.viewModel=(activity as MainActivity).homeViewModel
+        dataBinding.lifecycleOwner=this
     }
 
     companion object {
